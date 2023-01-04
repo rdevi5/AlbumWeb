@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Album.Business.Model.AlbumDto>
+
+
+@using (Html.BeginForm("TracksAlbum", "Album", FormMethod.Post))
+{
+    <div class="container">
+        <div class="col-md-8">
+            <div class="col-6">
+                <h2 class="text-info">Album List</h2>
+            </div>
+
+            <div class="row">
+                <br />
+                <div style="height:600px;overflow-y:scroll">
+                    <table class="table">
+                        <tr>
+                            <th>Album Id</th>
+                            <th>
+                                Title
+                            </th>
+                            <th>Select</th>
+                        </tr>
+
+                        @for (var i = 0; i < Model.Count(); i++)
+                        {
+                            <tr>
+                                <td>                                    
+                                    @Html.DisplayFor(m => Model[i].AlbumId)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(Model[i].AlbumName,"UpdateAlbum","Album",new {albumid = Model[i].AlbumId,title=Model[i].AlbumName },null)
+                                </td>
+                                <td>
+                                    @Html.HiddenFor(m => Model[i].AlbumId)
+                                    @Html.CheckBoxFor(m=> Model[i].IsChecked)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="submit" class="btn btn-primary">View Track</button>
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    
+</script>

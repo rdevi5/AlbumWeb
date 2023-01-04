@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<Album.Business.Model.AlbumDto>
+<div class="container">
+
+    <div class="col-md-8">
+        <div class="col-6">
+            <h2 class="text-info">Album List</h2>
+        </div>
+        
+        <div class="row">
+            <br />
+             <div style="height:600px;overflow-y:scroll">
+                <table class="table">
+                    <tr>
+                        <th>Album Id</th>
+                        <th>
+                            Title
+                        </th>                        
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => item.AlbumId)
+                            </td>
+                            <td>
+                               @Html.DisplayFor(m => item.AlbumName)
+                            </td>                           
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
